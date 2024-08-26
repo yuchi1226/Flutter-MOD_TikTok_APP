@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "571007445528",
+    "project_id": "mod-tiktok-app-ac7e8",
+    "storage_bucket": "mod-tiktok-app-ac7e8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:571007445528:android:61c87db6cb88bd5f03716d",
+        "android_client_info": {
+          "package_name": "com.example.flutter_mod_tiktok_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALavjRJPe0-cyatZD4Z_-YhdsTTmaq5-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
