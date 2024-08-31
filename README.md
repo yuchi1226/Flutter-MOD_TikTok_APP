@@ -1,8 +1,4 @@
-# Flutter-MOD_TikTok_APP<!-- BV1LK4y1P7BB -->
-
-A new Flutter project.
-
-## Getting Started
+# Flutter-MOD_TikTok_APP <!-- BV1LK4y1P7BB -->
 
 ---
 ## 參考資料 -- 
