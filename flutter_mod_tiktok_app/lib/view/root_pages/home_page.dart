@@ -1,0 +1,74 @@
+import 'package:flutter/material.dart';
+import '../../components/root_page_head.dart';
+import '../sub_pages/song_page..dart';
+
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+const List<Tab> _tabs = [
+  Tab(text: '歌曲'),
+  Tab(text: '推薦'),
+  Tab(text: '歌手'),
+  Tab(text: '短片'),
+  Tab(text: '文章'),
+  Tab(text: '影片'),
+];
+
+final List<Widget> _tabsContent = [
+  SongPage(),
+  const Text('111111'),
+  const Text('111111'),
+  const Text('111111'),
+  const Text('111111'),
+  const Text('111111'),
+];
+
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _tabController = TabController(
+      //initialIndex: 1, //起始畫面在第幾頁面
+      length: _tabs.length,
+      vsync: this,
+    );
+    //監聽切換
+    //_tabController.addListener(() {
+    //  _tabController.index;
+    //});
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: RootPageHead(),
+        bottom: TabBar(
+          tabs: _tabs,
+          controller: _tabController,
+          //isScrollable: true,
+        ),
+      ),
+      body: TabBarView(
+        controller: _tabController,
+        children: _tabsContent,
+      ),
+    );
+  }
+}

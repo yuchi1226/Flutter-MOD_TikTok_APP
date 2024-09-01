@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mod_tiktok_app/add_data.dart';
-import 'package:flutter_mod_tiktok_app/fetch_data.dart';
+
+import 'add_data.dart';
+import 'fetch_data.dart';
+
 
 class ConnectionFirebase extends StatefulWidget {
   const ConnectionFirebase({super.key});
