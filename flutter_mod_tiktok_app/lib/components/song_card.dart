@@ -14,15 +14,20 @@ class SongCard extends StatelessWidget {
       child: Row(
         children: [
           _songCover(),
+          //_songContent(),
         ],
       ),
     );
   }
 
+  /* Widget _songContent() {
+
+  } */
+
   Widget _songCover() {
     return SizedBox(
-      width: 150,
-      height: 150,
+      width: 75,
+      height: 75,
       child: Stack(
         fit: StackFit.expand,
         children: [

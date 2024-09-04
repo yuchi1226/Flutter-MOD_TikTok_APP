@@ -1,5 +1,8 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mod_tiktok_app/models/song_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import '../../components/song_card.dart';
 
 class SongPage extends StatefulWidget {
   const SongPage({super.key});
@@ -19,9 +22,22 @@ class _SongPageState extends State<SongPage> {
     // TODO: implement initState
     super.initState();
 
-    //_getsongs();
+    _getsongs();
   }
 
+  Future _getsongs({bool push = false}) async {
+    try {
+      // 獲取歌曲集合
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('SongItem').get();
+
+      // 遍歷每個文檔
+      for (var doc in querySnapshot.docs) {
+        print(doc.data()); // 打印文檔數據
+      }
+    } catch (e) {
+      print("Error getting songs: $e");
+    }
+  }
   //31
   //Future _getsongs({bool push = false}) async {
   // //獲取數據
@@ -48,8 +64,16 @@ class _SongPageState extends State<SongPage> {
       itemBuilder: (BuildContext context, int index) {
         return Container(
           height: 80,
-          color: Colors.black.withOpacity(index/10),
+          color: Colors.black.withOpacity(index / 10),
         );
+        /* return Column(
+          children: [
+            SizedBox(
+              height: 16,
+            ),
+            SongCard(songItem: _songList[index]),
+          ],
+        ); */
       },
     );
   }
