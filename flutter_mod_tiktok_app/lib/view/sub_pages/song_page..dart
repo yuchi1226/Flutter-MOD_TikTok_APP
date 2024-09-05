@@ -26,7 +26,7 @@ class _SongPageState extends State<SongPage> {
   }
 
   Future _getsongs({bool push = false}) async {
-    try {
+    /* try {
       // 獲取歌曲集合
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('SongItem').get();
 
@@ -36,26 +36,47 @@ class _SongPageState extends State<SongPage> {
       }
     } catch (e) {
       print("Error getting songs: $e");
+    } */
+    try {
+      // Fetch the songs collection from Firestore
+      CollectionReference songsCollection =
+          FirebaseFirestore.instance.collection('SongItem');
+
+      // Get the data from Firestore
+      QuerySnapshot querySnapshot = await songsCollection.get();
+
+      // Convert each document into a Map (or to your specific entity class)
+      List<Map<String, dynamic>> songs = querySnapshot.docs.map((doc) {
+        return doc.data() as Map<String, dynamic>;
+      }).toList();
+
+      // Print each song's data
+      for (var song in songs) {
+        print(song);
+      }
+    } catch (e) {
+      print('Error fetching songs: $e');
     }
   }
+
   //31
-  //Future _getsongs({bool push = false}) async {
-  // //獲取數據
-  // Map<String, dynamic> result = await SongService.getSongs(page: page);
-  // //將數據轉換為實體數據
-  // SongList songListModel = SongList.fromJson(result['data']);
-  //
-  // SetState((){
-  //  hasMore = page * limit < result['total'];
-  //  page++;
-  //
-  //  if(push) {
-  //    _songList.addAll (songListModel.list);
-  //  }else {
-  //    _songList = songListModel.list;
-  //  }
-  // });
-  //}
+  /* Future _getsongs_test({bool push = false}) async {
+    //獲取數據
+    Map<String, dynamic> result = await SongService.getSongs(page: page);
+    //將數據轉換為實體數據
+    SongList songListModel = SongList.fromJson(result['data']);
+
+    setState(() {
+      hasMore = page * limit < result['total'];
+      page++;
+
+      if (push) {
+        _songList.addAll(songListModel.list);
+      } else {
+        _songList = songListModel.list;
+      }
+    });
+  } */
 
   @override
   Widget build(BuildContext context) {
