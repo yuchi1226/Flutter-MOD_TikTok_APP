@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mod_tiktok_app/components/avatar_role_name.dart';
+import 'package:flutter_mod_tiktok_app/config/app_colors.dart';
 import '../models/song_model.dart';
 import '../utils/util.dart';
 
@@ -14,15 +16,63 @@ class SongCard extends StatelessWidget {
       child: Row(
         children: [
           _songCover(),
-          //_songContent(),
+          SizedBox(
+            width: 8,
+          ), //文字中間加點距離
+          _songContent(),
         ],
       ),
     );
   }
 
-  /* Widget _songContent() {
-
-  } */
+  Widget _songContent() {
+    return Expanded(
+      child: SizedBox(
+        height: 75,
+        child: Stack(
+          children: [
+            Text(
+              songItem.cnName,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: AppColors.active,
+                fontSize: 16,
+              ),
+            ),
+            Positioned(
+              top: 25,
+              child: Text(
+                songItem.enName,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: AppColors.un3active,
+                  fontSize: 14,
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 110,
+                    child: AvataRoleName(
+                      coverPictureUrl: songItem.user.coverPictureUrl,
+                      
+                      nickname: songItem.user.nickname,
+                      showType: false,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   Widget _songCover() {
     return SizedBox(

@@ -132,15 +132,14 @@ class _SongPageState extends State<SongPage> {
           height: 80,
           color: Colors.black.withOpacity(index / 10),
         ); */
-        /* return Column(
+        return Column(
           children: [
             SizedBox(
               height: 16,
             ),
             SongCard(songItem: _songList[index]),
           ],
-        ); */
-        return SongCard(songItem: _songList[index]);
+        ); 
       },
     );
   }
