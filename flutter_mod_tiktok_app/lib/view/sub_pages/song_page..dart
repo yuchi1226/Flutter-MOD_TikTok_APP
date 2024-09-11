@@ -60,6 +60,7 @@ class _SongPageState extends State<SongPage> {
         } else {
           _songList = songListModel.list;
         }
+        
       });
     } catch (e) {
       print('Error fetching songs: $e');
@@ -128,10 +129,10 @@ class _SongPageState extends State<SongPage> {
     return ListView.builder(
       itemCount: _songList.length,
       itemBuilder: (BuildContext context, int index) {
-        return Container(
+        /* return Container(
           height: 80,
           color: Colors.black.withOpacity(index / 10),
-        ); 
+        ); */
         /* return Column(
           children: [
             SizedBox(
@@ -140,6 +141,7 @@ class _SongPageState extends State<SongPage> {
             SongCard(songItem: _songList[index]),
           ],
         ); */
+        return SongCard(songItem: _songList[index]);
       },
     );
   }
