@@ -13,9 +13,12 @@ class SongPage extends StatefulWidget {
 
 class _SongPageState extends State<SongPage> {
   List<SongItem> _songList = SongList([]).list;
-  late int page = 1;
-  late int limit = 10;
-  late bool hasMore = true;
+  int page = 1;
+  int limit = 10;
+  bool hasMore = true;
+  bool loading = true;
+  bool error = false;
+  String errorMsg = '';
 
   @override
   void initState() {
@@ -26,6 +29,48 @@ class _SongPageState extends State<SongPage> {
   }
 
   Future _getsongs({bool push = false}) async {
+    try {
+      // Fetch the songs collection from Firestore
+      CollectionReference songsCollection =
+          FirebaseFirestore.instance.collection('SongItem');
+      // Get the data from Firestore
+      QuerySnapshot querySnapshot = await songsCollection.get();
+
+      print('fetching SongItem: ');
+
+      // Convert the Firestore documents to a list of maps
+      List<dynamic> songDataList =
+          querySnapshot.docs.map((doc) => doc.data()).toList();
+      // Convert the list of maps into a SongList
+      SongList songListModel = SongList.fromJson(songDataList);
+      // Update the state with the new song list
+      setState(() {
+        _songList = songListModel.list;
+      });
+      // Print out the song list to confirm data is correctly fetched
+      print(songListModel);
+      print('fetching finish ');
+
+      setState(() {
+        hasMore = page * limit < 10;
+        page++;
+
+        if (push) {
+          _songList.addAll(songListModel.list);
+        } else {
+          _songList = songListModel.list;
+        }
+      });
+    } catch (e) {
+      print('Error fetching songs: $e');
+      setState(() {
+        error = true;
+        errorMsg = e.toString();
+      });
+    }
+  }
+
+  /* Future _getsongs({bool push = false}) async {
     /* try {
       // 獲取歌曲集合
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance.collection('SongItem').get();
@@ -57,7 +102,7 @@ class _SongPageState extends State<SongPage> {
     } catch (e) {
       print('Error fetching songs: $e');
     }
-  }
+  } */
 
   //31
   /* Future _getsongs_test({bool push = false}) async {
@@ -81,12 +126,12 @@ class _SongPageState extends State<SongPage> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 10,
+      itemCount: _songList.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
           height: 80,
           color: Colors.black.withOpacity(index / 10),
-        );
+        ); 
         /* return Column(
           children: [
             SizedBox(

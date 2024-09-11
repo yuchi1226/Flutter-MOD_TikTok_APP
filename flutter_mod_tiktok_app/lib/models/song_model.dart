@@ -5,9 +5,10 @@ import 'user_model.dart';
 /// 列表模型
 class SongList {
   /// 包含 UserItem 模型的集合
-  List<SongItem> list;
+  final List<SongItem> list;
   
   SongList(this.list);
+
   /// 循環後台返回的數組，將每一項組裝成 UserItem
   factory SongList.fromJson(List<dynamic> list) {
     return SongList(
