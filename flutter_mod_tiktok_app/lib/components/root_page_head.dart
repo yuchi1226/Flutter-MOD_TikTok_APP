@@ -27,15 +27,15 @@ class RootPageHead extends StatelessWidget {
   Widget _searchConent() {
     return Container(
       height: 30,
-      margin: EdgeInsets.symmetric(horizontal: 15),
+      margin: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
         color: AppColors.page,
         borderRadius: BorderRadius.circular(30),
       ),
-      child: Row(
+      child: const Row(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 6, right: 2,),
+            padding: EdgeInsets.only(left: 6, right: 2,),
             child: Icon(
               Icons.search,
               size: 16,

@@ -20,7 +20,7 @@ const List<Tab> _tabs = [
 ];
 
 final List<Widget> _tabsContent = [
-  SongPage(),
+  const SongPage(),
   const Text('111111'),
   const Text('111111'),
   const Text('111111'),
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: RootPageHead(),
+        title: const RootPageHead(),
         bottom: TabBar(
           tabs: _tabs,
           controller: _tabController,

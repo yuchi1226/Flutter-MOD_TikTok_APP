@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 
 /// 用户列表項/用户詳情模型
 class UserItem {
