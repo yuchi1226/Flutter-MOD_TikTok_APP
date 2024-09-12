@@ -63,6 +63,7 @@ class SongCard extends StatelessWidget {
                       coverPictureUrl: songItem.user.coverPictureUrl,
                       nickname: songItem.user.nickname,
                       showType: false,
+                      //type: 'DQ_SINGER',
                     ),
                   ),
                   Expanded(

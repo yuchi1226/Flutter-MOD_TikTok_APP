@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mod_tiktok_app/config/app_colors.dart';
 
+import '../utils/user_type.dart';
+
 class AvataRoleName extends StatelessWidget {
   final String coverPictureUrl;
   final String nickname;
@@ -49,11 +51,11 @@ class AvataRoleName extends StatelessWidget {
         horizontal: 4,
       ),
       decoration: BoxDecoration(
-        color: Colors.black,
+        color: UserType.formColor(type!),
         borderRadius: BorderRadius.circular(4),
       ),
       child: Text(
-        type ?? '未知',
+        UserType.formCn(type!),
         style: const TextStyle(
           color: Colors.white,
           fontSize: 10,
