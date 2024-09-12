@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mod_tiktok_app/config/app_colors.dart';
-
 import '../utils/user_type.dart';
 
 class AvataRoleName extends StatelessWidget {

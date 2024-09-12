@@ -58,12 +58,12 @@ class SongCard extends StatelessWidget {
               child: Row(
                 children: [
                   SizedBox(
-                    width: 110,
+                    width: 80,
                     child: AvataRoleName(
                       coverPictureUrl: songItem.user.coverPictureUrl,
                       nickname: songItem.user.nickname,
                       showType: false,
-                      //type: 'DQ_SINGER',
+                      type: songItem.user.type,
                     ),
                   ),
                   Expanded(

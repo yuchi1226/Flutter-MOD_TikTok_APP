@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mod_tiktok_app/config/app_colors.dart';
 
+import '../utils/util.dart';
+
 class CommentLikeRead extends StatelessWidget {
   final int commentCount;
   final int thumbUpCount;
@@ -36,7 +38,7 @@ class CommentLikeRead extends StatelessWidget {
           ),
           Expanded(
             child: Text(
-              count.toString(),
+              formatCharCount(count),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
