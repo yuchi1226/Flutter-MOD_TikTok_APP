@@ -134,7 +134,7 @@ class _SongPageState extends State<SongPage> {
         ); */
         return Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 16,
             ),
             SongCard(songItem: _songList[index]),

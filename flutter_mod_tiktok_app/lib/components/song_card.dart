@@ -3,6 +3,7 @@ import 'package:flutter_mod_tiktok_app/components/avatar_role_name.dart';
 import 'package:flutter_mod_tiktok_app/config/app_colors.dart';
 import '../models/song_model.dart';
 import '../utils/util.dart';
+import 'comment_like_read.dart';
 
 class SongCard extends StatelessWidget {
   final SongItem songItem;
@@ -16,7 +17,7 @@ class SongCard extends StatelessWidget {
       child: Row(
         children: [
           _songCover(),
-          SizedBox(
+          const SizedBox(
             width: 8,
           ), //文字中間加點距離
           _songContent(),
@@ -35,7 +36,7 @@ class SongCard extends StatelessWidget {
               songItem.cnName,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
                 color: AppColors.active,
                 fontSize: 16,
               ),
@@ -46,7 +47,7 @@ class SongCard extends StatelessWidget {
                 songItem.enName,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.un3active,
                   fontSize: 14,
                 ),
@@ -60,9 +61,15 @@ class SongCard extends StatelessWidget {
                     width: 110,
                     child: AvataRoleName(
                       coverPictureUrl: songItem.user.coverPictureUrl,
-                      
                       nickname: songItem.user.nickname,
                       showType: false,
+                    ),
+                  ),
+                  Expanded(
+                    child: CommentLikeRead(
+                      commentCount: songItem.commentCount,
+                      thumbUpCount: songItem.thumbUpCount,
+                      readCount: songItem.readCount,
                     ),
                   ),
                 ],

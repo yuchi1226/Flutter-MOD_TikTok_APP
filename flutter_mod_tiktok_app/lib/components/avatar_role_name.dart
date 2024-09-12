@@ -8,12 +8,12 @@ class AvataRoleName extends StatelessWidget {
   final bool showType;
 
   const AvataRoleName({
-    Key? key,
+    super.key,
     required this.coverPictureUrl,
     required this.nickname,
     this.type,
     this.showType = true,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +43,8 @@ class AvataRoleName extends StatelessWidget {
 
   Widget _role() {
     return Container(
-      margin: EdgeInsets.only(left: 6),
-      padding: EdgeInsets.symmetric(
+      margin: const EdgeInsets.only(left: 6),
+      padding: const EdgeInsets.symmetric(
         vertical: 2,
         horizontal: 4,
       ),
@@ -54,7 +54,7 @@ class AvataRoleName extends StatelessWidget {
       ),
       child: Text(
         type ?? '未知',
-        style: TextStyle(
+        style: const TextStyle(
           color: Colors.white,
           fontSize: 10,
         ),
@@ -65,14 +65,14 @@ class AvataRoleName extends StatelessWidget {
   Widget _nickname() {
     return Expanded(
       child: Container(
-        margin: EdgeInsets.only(
+        margin: const EdgeInsets.only(
           left: 6,
         ),
         child: Text(
           nickname,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
-          style: TextStyle(
+          style: const TextStyle(
             color: AppColors.unactive,
             fontSize: 14,
           ),
