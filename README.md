@@ -10,4 +10,6 @@
 
 * Failed to load FirebaseOptions from resource. Check that you have defined values.xml correctly:https://www.youtube.com/watch?v=bHxoJWWsG7A
 
+* 類別的建構子中，參數不能為null:https://blog.csdn.net/shulianghan/article/details/119918924
+
 -- >
