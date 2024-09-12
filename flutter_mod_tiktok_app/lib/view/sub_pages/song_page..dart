@@ -59,7 +59,6 @@ class _SongPageState extends State<SongPage> {
         } else {
           _songList = songListModel.list;
         }
-        
       });
     } catch (e) {
       print('Error fetching songs: $e');
@@ -134,12 +133,10 @@ class _SongPageState extends State<SongPage> {
         ); */
         return Column(
           children: [
-            const SizedBox(
-              height: 16,
-            ),
+            const SizedBox(height: 8),
             SongCard(songItem: _songList[index]),
           ],
-        ); 
+        );
       },
     );
   }
