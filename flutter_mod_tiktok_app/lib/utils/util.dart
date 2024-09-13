@@ -7,7 +7,7 @@ double toRpx(BuildContext context, double size) {
 }
 
 formatCharCount(int count) {
-  if (count == null || count <= 0 || count.isNaN) {
+  if (count <= 0 || count.isNaN) {
     return '0';
   }
 
@@ -22,7 +22,7 @@ formatCharCount(int count) {
     if (strCount.length == 6) {
       prefix += '.${strCount[2]}';
     }
-    return prefix + 'w';
+    return '${prefix}w';
   }
   return strCount;
 }

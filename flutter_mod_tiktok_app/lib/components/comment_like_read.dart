@@ -33,7 +33,7 @@ class CommentLikeRead extends StatelessWidget {
             width: 14,
             height: 14,
           ),
-          SizedBox(
+          const SizedBox(
             width: 4,
           ),
           Expanded(
@@ -41,7 +41,7 @@ class CommentLikeRead extends StatelessWidget {
               formatCharCount(count),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
                 color: AppColors.un3active,
                 fontSize: 12,
               ),
