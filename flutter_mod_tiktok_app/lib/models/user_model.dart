@@ -1,3 +1,18 @@
+import 'package:flutter/cupertino.dart';
+
+/// 用户列表模型
+class UserList {
+  /// 包含 UserItem 模型的集合
+  List<UserItem> list;
+
+  UserList(this.list);
+	/// 循環後台傳回的陣列 將每一項組裝成 UserItem
+  factory UserList.fromJson(List<dynamic> list) {
+    return UserList(
+      list.map((item) => UserItem.fromJson(item)).toList(),
+    );
+  }
+}
 
 /// 用户列表項/用户詳情模型
 class UserItem {
