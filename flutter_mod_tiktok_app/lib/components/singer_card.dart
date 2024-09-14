@@ -66,8 +66,8 @@ class SingerCard extends StatelessWidget {
         children: [
           Image.asset(
             icon,
-            width: 16,
-            height: 16,
+            width: 18,
+            height: 18,
           ),
           Expanded(
             child: Text(
@@ -76,7 +76,7 @@ class SingerCard extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: AppColors.unactive,
-                fontSize: 12,
+                fontSize: 13,
               ),
             ),
           ),

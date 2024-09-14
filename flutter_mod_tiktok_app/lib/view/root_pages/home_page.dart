@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../components/root_page_head.dart';
+import '../sub_pages/singer_page.dart';
 import '../sub_pages/song_page..dart';
 
 
@@ -22,7 +23,7 @@ const List<Tab> _tabs = [
 final List<Widget> _tabsContent = [
   const SongPage(),
   const Text('111111'),
-  const Text('111111'),
+  const SingerPage(),
   const Text('111111'),
   const Text('111111'),
   const Text('111111'),
