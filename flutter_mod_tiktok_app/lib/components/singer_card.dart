@@ -31,12 +31,12 @@ class SingerCard extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: EdgeInsets.symmetric(vertical: 8),
+          padding: const EdgeInsets.symmetric(vertical: 8),
           child: Text(
             nickname,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
-            style: TextStyle(
+            style: const TextStyle(
               color: AppColors.active,
               fontSize: 16,
             ),
@@ -74,7 +74,7 @@ class SingerCard extends StatelessWidget {
               label + formatCharCount(count),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
                 color: AppColors.unactive,
                 fontSize: 13,
               ),

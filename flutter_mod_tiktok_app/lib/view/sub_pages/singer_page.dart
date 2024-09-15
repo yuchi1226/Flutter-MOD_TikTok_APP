@@ -31,18 +31,18 @@ class _SingerPageState extends State<SingerPage> {
   Future _getusers({bool push = false}) async {
     try {
       // Fetch the songs collection from Firestore
-      CollectionReference songsCollection =
-          FirebaseFirestore.instance.collection('SongItem');
+      CollectionReference singerCollection =
+          FirebaseFirestore.instance.collection('UserItem');
       // Get the data from Firestore
-      QuerySnapshot querySnapshot = await songsCollection.get();
+      QuerySnapshot querySnapshot = await singerCollection.get();
 
       print('fetching UserItem: ');
 
       // Convert the Firestore documents to a list of maps
-      List<dynamic> songDataList =
+      List<dynamic> singerDataList =
           querySnapshot.docs.map((doc) => doc.data()).toList();
       // Convert the list of maps into a SongList
-      UserList userListModel = UserList.fromJson(songDataList);
+      UserList userListModel = UserList.fromJson(singerDataList);
       // Update the state with the new song list
       setState(() {
         _singerList = userListModel.list;
@@ -121,7 +121,7 @@ class _SingerPageState extends State<SingerPage> {
           ),
         );
       },
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 8,
       ),
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
