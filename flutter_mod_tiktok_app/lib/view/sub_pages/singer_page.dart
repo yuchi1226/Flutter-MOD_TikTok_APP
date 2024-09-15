@@ -28,7 +28,7 @@ class _SingerPageState extends State<SingerPage> {
     _getusers();
   }
 
-  Future _getusers({bool push = false}) async {
+  Future _getusers({bool replace = true}) async {
     try {
       // Fetch the songs collection from Firestore
       CollectionReference singerCollection =
@@ -42,30 +42,33 @@ class _SingerPageState extends State<SingerPage> {
       List<dynamic> singerDataList =
           querySnapshot.docs.map((doc) => doc.data()).toList();
       // Convert the list of maps into a SongList
-      UserList userListModel = UserList.fromJson(singerDataList);
+      UserList singerListModel = UserList.fromJson(singerDataList);
       // Update the state with the new song list
       setState(() {
-        _singerList = userListModel.list;
+        _singerList = singerListModel.list;
       });
       // Print out the song list to confirm data is correctly fetched
-      print(userListModel);
+      print(singerListModel);
       print('fetching finish ');
 
       setState(() {
         hasMore = page * limit < 10;
         page++;
 
-        if (push) {
-          _singerList.addAll(userListModel.list);
+        if (replace) {
+          _singerList = singerListModel.list;
         } else {
-          _singerList = userListModel.list;
+          _singerList.addAll(singerListModel.list);
         }
       });
     } catch (e) {
-      print('Error fetching songs: $e');
       setState(() {
         error = true;
         errorMsg = e.toString();
+      });
+    } finally {
+      setState(() {
+        loading = false;
       });
     }
   }
@@ -102,16 +105,12 @@ class _SingerPageState extends State<SingerPage> {
     return GridView.builder(
       itemCount: _singerList.length,
       itemBuilder: (BuildContext context, int index) {
-        bool isEven = index.isEven;
-        double pl = isEven ? 18 : 9;
-        double pr = isEven ? 9 : 18;
+        final bool _isEven = index.isEven;
+        final double _pr = _isEven ? 10 : 20;
+        final double _pl = _isEven ? 20 : 10;
 
         return Container(
-          padding: EdgeInsets.only(
-            top: 18,
-            left: pl,
-            right: pr,
-          ),
+          padding: EdgeInsets.only(top: 20, left: _pl, right: _pr),
           color: Colors.white,
           child: SingerCard(
             coverPictureUrl: _singerList[index].coverPictureUrl,
