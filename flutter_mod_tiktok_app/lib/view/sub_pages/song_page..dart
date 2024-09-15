@@ -1,3 +1,4 @@
+import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mod_tiktok_app/models/song_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,6 +12,7 @@ class SongPage extends StatefulWidget {
 }
 
 class _SongPageState extends State<SongPage> {
+  late EasyRefreshController _easyRefreshController;
   List<SongItem> _songList = SongList([]).list;
   int page = 1;
   int limit = 10;
@@ -21,13 +23,13 @@ class _SongPageState extends State<SongPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    _easyRefreshController = EasyRefreshController();
 
-    _getsongs();
+    _getSongs();
   }
 
-  Future _getsongs({bool push = false}) async {
+  Future _getSongs({bool push = false}) async {
     try {
       // Fetch the songs collection from Firestore
       CollectionReference songsCollection =
@@ -122,22 +124,41 @@ class _SongPageState extends State<SongPage> {
     });
   } */
 
+  //下拉刷新
+  Future _onRefresh() async {}
+  //上拉加載
+  Future _onLoad() async {
+    if (hasMore) {
+      await _getSongs(push: true);
+    }
+
+    _easyRefreshController.finishLoad(
+        !hasMore ? IndicatorResult.noMore : IndicatorResult.success);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _songList.length,
-      itemBuilder: (BuildContext context, int index) {
-        /* return Container(
-          height: 80,
-          color: Colors.black.withOpacity(index / 10),
-        ); */
-        return Column(
-          children: [
-            const SizedBox(height: 8),
-            SongCard(songItem: _songList[index]),
-          ],
-        );
-      },
+    return EasyRefresh(
+      controller: _easyRefreshController,
+      header: ClassicHeader(),
+      footer: ClassicFooter(),
+      onRefresh: _onRefresh,
+      onLoad: _onLoad,
+      child: ListView.builder(
+        itemCount: _songList.length,
+        itemBuilder: (BuildContext context, int index) {
+          /* return Container(
+            height: 80,
+            color: Colors.black.withOpacity(index / 10),
+          ); */
+          return Column(
+            children: [
+              const SizedBox(height: 8),
+              SongCard(songItem: _songList[index]),
+            ],
+          );
+        },
+      ),
     );
   }
 }

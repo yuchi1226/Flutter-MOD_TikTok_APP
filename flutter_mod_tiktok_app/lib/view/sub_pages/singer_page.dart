@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../components/singer_card.dart';
-import '../../components/song_card.dart';
 import '../../models/user_model.dart';
 
 class SingerPage extends StatefulWidget {
@@ -22,7 +21,6 @@ class _SingerPageState extends State<SingerPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _getusers();
