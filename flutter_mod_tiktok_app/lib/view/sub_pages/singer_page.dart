@@ -103,12 +103,12 @@ class _SingerPageState extends State<SingerPage> {
     return GridView.builder(
       itemCount: _singerList.length,
       itemBuilder: (BuildContext context, int index) {
-        final bool _isEven = index.isEven;
-        final double _pr = _isEven ? 10 : 20;
-        final double _pl = _isEven ? 20 : 10;
+        final bool isEven = index.isEven;
+        final double pr = isEven ? 10 : 20;
+        final double pl = isEven ? 20 : 10;
 
         return Container(
-          padding: EdgeInsets.only(top: 20, left: _pl, right: _pr),
+          padding: EdgeInsets.only(top: 20, left: pl, right: pr),
           color: Colors.white,
           child: SingerCard(
             coverPictureUrl: _singerList[index].coverPictureUrl,

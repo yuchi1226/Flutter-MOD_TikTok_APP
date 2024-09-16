@@ -12,24 +12,39 @@ class SongPage extends StatefulWidget {
 }
 
 class _SongPageState extends State<SongPage> {
-  late EasyRefreshController _easyRefreshController;
+  EasyRefreshController _easyRefreshController = EasyRefreshController(
+    controlFinishRefresh: true,
+    controlFinishLoad: true,
+  );  
+  // 下拉刷新控制器
+  //late EasyRefreshController _easyRefreshController;
+  // 獨立的捲動視圖 防止tab切換時觸發下拉刷新
+  late ScrollController _scrollController;
   List<SongItem> _songList = SongList([]).list;
   int page = 1;
   int limit = 10;
   bool hasMore = true;
   bool loading = true;
   bool error = false;
-  String errorMsg = '';
+  String? errorMsg ;
 
   @override
   void initState() {
     super.initState();
     _easyRefreshController = EasyRefreshController();
+    //_scrollController = ScrollController();
 
     _getSongs();
   }
 
-  Future _getSongs({bool push = false}) async {
+  /* @override
+  void dispose() {
+    _easyRefreshController.dispose();
+    _scrollController.dispose();
+    super.dispose();
+  } */
+
+  Future _getSongs({bool replace = true}) async {
     try {
       // Fetch the songs collection from Firestore
       CollectionReference songsCollection =
@@ -56,7 +71,7 @@ class _SongPageState extends State<SongPage> {
         hasMore = page * limit < 10;
         page++;
 
-        if (push) {
+        if (replace) {
           _songList.addAll(songListModel.list);
         } else {
           _songList = songListModel.list;
@@ -125,23 +140,38 @@ class _SongPageState extends State<SongPage> {
   } */
 
   //下拉刷新
-  Future _onRefresh() async {}
-  //上拉加載
-  Future _onLoad() async {
-    if (hasMore) {
-      await _getSongs(push: true);
+  Future _onRefresh() async {
+    if (error) {
+      setState(() => error = false);
     }
-
-    _easyRefreshController.finishLoad(
-        !hasMore ? IndicatorResult.noMore : IndicatorResult.success);
+    page = 1;
+    await _getSongs();
+    // 恢復刷新狀態 讓onLoad再次可用
+    _easyRefreshController.resetFooter();
   }
 
-  @override
+  //上拉加載
+  Future _onLoad() async {
+    try {
+      if (hasMore) {
+        await _getSongs(replace: false);
+      }
+      // 完成加載
+      //_easyRefreshController.finishLoad(IndicatorResult.noMore);
+      _easyRefreshController.finishLoad(hasMore ? IndicatorResult.success : IndicatorResult.noMore);
+    } catch (e) {
+      print('_onLoad failed: $e');
+    }
+  }
+
+   @override
   Widget build(BuildContext context) {
     return EasyRefresh(
       controller: _easyRefreshController,
-      header: ClassicHeader(),
-      footer: ClassicFooter(),
+      header: const ClassicHeader(),
+      footer: const ClassicFooter(),
+      //enableControlFinishRefresh: true,
+      //enableControlFinishLoad: true,
       onRefresh: _onRefresh,
       onLoad: _onLoad,
       child: ListView.builder(
@@ -160,5 +190,5 @@ class _SongPageState extends State<SongPage> {
         },
       ),
     );
-  }
+  } 
 }
