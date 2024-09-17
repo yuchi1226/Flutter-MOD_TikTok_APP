@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../components/root_page_head.dart';
 import '../sub_pages/singer_page.dart';
 import '../sub_pages/song_page..dart';
+import 'tiny_video.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -24,7 +25,7 @@ final List<Widget> _tabsContent = [
   const SongPage(),
   const Text('111111'),
   const SingerPage(),
-  const Text('111111'),
+  const TinyVideoPage(),
   const Text('111111'),
   const Text('111111'),
 ];
