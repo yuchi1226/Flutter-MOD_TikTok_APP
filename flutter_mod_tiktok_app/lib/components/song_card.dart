@@ -64,6 +64,7 @@ class SongCard extends StatelessWidget {
                       nickname: songItem.user.nickname,
                       showType: false,
                       type: songItem.user.type,
+                      avatarSize: 20,
                     ),
                   ),
                   Expanded(

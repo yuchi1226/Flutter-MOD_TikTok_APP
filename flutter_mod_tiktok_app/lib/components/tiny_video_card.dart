@@ -20,6 +20,7 @@ class TinyVideoCard extends StatelessWidget {
             coverPictureUrl: videoItem.user!.coverPictureUrl,
             nickname: videoItem.user!.nickname,
             type: videoItem.user!.type,
+            //avatarSize: 25,
           ),
         ),
         CommentLikeRead(
