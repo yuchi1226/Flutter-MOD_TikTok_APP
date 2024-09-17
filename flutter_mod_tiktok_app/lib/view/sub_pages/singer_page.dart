@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../components/singer_card.dart';
 import '../../models/user_model.dart';
+import 'package:easy_refresh/easy_refresh.dart';
 
 class SingerPage extends StatefulWidget {
   const SingerPage({super.key});
@@ -11,6 +12,10 @@ class SingerPage extends StatefulWidget {
 }
 
 class _SingerPageState extends State<SingerPage> {
+  EasyRefreshController _easyRefreshController = EasyRefreshController(
+    controlFinishRefresh: true,
+    controlFinishLoad: true,
+  );
   List<UserItem> _singerList = UserList([]).list;
   int page = 1;
   int limit = 10;
@@ -22,11 +27,12 @@ class _SingerPageState extends State<SingerPage> {
   @override
   void initState() {
     super.initState();
+    _easyRefreshController = EasyRefreshController();
 
-    _getusers();
+    _getUsers();
   }
 
-  Future _getusers({bool replace = true}) async {
+  Future _getUsers({bool replace = true}) async {
     try {
       // Fetch the songs collection from Firestore
       CollectionReference singerCollection =
@@ -98,8 +104,45 @@ class _SingerPageState extends State<SingerPage> {
     }
   } */
 
+  //下拉刷新
+  Future _onRefresh() async {
+    if (error) {
+      setState(() => error = false);
+    }
+    page = 1;
+    await _getUsers();
+    // 恢復刷新狀態 讓onLoad再次可用
+    _easyRefreshController.resetFooter();
+  }
+
+  //上拉加載
+  Future _onLoad() async {
+    try {
+      if (hasMore) {
+        await _getUsers(replace: false);
+      }
+      // 完成加載
+      //_easyRefreshController.finishLoad(IndicatorResult.noMore);
+      _easyRefreshController.finishLoad(
+          hasMore ? IndicatorResult.success : IndicatorResult.noMore);
+    } catch (e) {
+      print('_onLoad failed: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    return EasyRefresh(
+      controller: _easyRefreshController,
+      header: const ClassicHeader(),
+      footer: const ClassicFooter(),
+      onRefresh: _onRefresh,
+      onLoad: _onLoad,
+      child: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
     return GridView.builder(
       itemCount: _singerList.length,
       itemBuilder: (BuildContext context, int index) {
