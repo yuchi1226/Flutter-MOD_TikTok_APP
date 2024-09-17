@@ -16,7 +16,7 @@ class ArticleItem {
   final int id;
   final int userId;
   final UserItem user;
-  final String coverUrlList;
+  final List coverUrlList;
   final String title;
   final int commentCount;
   final int thumbUpCount;

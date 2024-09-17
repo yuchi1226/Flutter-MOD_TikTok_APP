@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 
 // 轉為 rpx
@@ -25,4 +27,10 @@ formatCharCount(int count) {
     return '${prefix}w';
   }
   return strCount;
+}
+
+//隨機獲取指定返回內的數值
+int getRandomRangeInt(int min, int max) {
+  final Random random = new Random();
+  return min + random.nextInt(max + 1 - min);
 }
