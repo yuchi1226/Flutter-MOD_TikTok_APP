@@ -11,11 +11,12 @@ class SongPage extends StatefulWidget {
   State<SongPage> createState() => _SongPageState();
 }
 
-class _SongPageState extends State<SongPage> {
+class _SongPageState extends State<SongPage>
+    with AutomaticKeepAliveClientMixin {
   EasyRefreshController _easyRefreshController = EasyRefreshController(
     controlFinishRefresh: true,
     controlFinishLoad: true,
-  );  
+  );
   // 下拉刷新控制器
   //late EasyRefreshController _easyRefreshController;
   // 獨立的捲動視圖 防止tab切換時觸發下拉刷新
@@ -26,7 +27,7 @@ class _SongPageState extends State<SongPage> {
   bool hasMore = true;
   bool loading = true;
   bool error = false;
-  String? errorMsg ;
+  String? errorMsg;
 
   @override
   void initState() {
@@ -158,14 +159,16 @@ class _SongPageState extends State<SongPage> {
       }
       // 完成加載
       //_easyRefreshController.finishLoad(IndicatorResult.noMore);
-      _easyRefreshController.finishLoad(hasMore ? IndicatorResult.success : IndicatorResult.noMore);
+      _easyRefreshController.finishLoad(
+          hasMore ? IndicatorResult.success : IndicatorResult.noMore);
     } catch (e) {
       print('_onLoad failed: $e');
     }
   }
 
-   @override
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     return EasyRefresh(
       controller: _easyRefreshController,
       header: const ClassicHeader(),
@@ -190,5 +193,8 @@ class _SongPageState extends State<SongPage> {
         },
       ),
     );
-  } 
+  }
+
+  @override
+  bool get wantKeepAlive => true;
 }

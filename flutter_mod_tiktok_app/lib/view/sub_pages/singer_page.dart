@@ -11,7 +11,8 @@ class SingerPage extends StatefulWidget {
   State<SingerPage> createState() => _SingerPageState();
 }
 
-class _SingerPageState extends State<SingerPage> {
+class _SingerPageState extends State<SingerPage>
+    with AutomaticKeepAliveClientMixin {
   EasyRefreshController _easyRefreshController = EasyRefreshController(
     controlFinishRefresh: true,
     controlFinishLoad: true,
@@ -132,6 +133,7 @@ class _SingerPageState extends State<SingerPage> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return EasyRefresh(
       controller: _easyRefreshController,
       header: const ClassicHeader(),
@@ -172,4 +174,7 @@ class _SingerPageState extends State<SingerPage> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
