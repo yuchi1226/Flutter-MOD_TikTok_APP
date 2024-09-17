@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../../components/tiny_video_card.dart';
+import 'package:flutter_mod_tiktok_app/components/tiny_video_card.dart';
+import 'package:flutter_mod_tiktok_app/models/video_model.dart';
 import 'package:easy_refresh/easy_refresh.dart';
-import '../../models/video_model.dart';
 
 class TinyVideoPage extends StatefulWidget {
   const TinyVideoPage({super.key});
@@ -35,25 +35,18 @@ class _TinyVideoPageState extends State<TinyVideoPage>
 
   Future _getVideos({bool replace = true}) async {
     try {
-      // Fetch the songs collection from Firestore
-      CollectionReference TinyVideoCollection =
+      CollectionReference videosCollection =
           FirebaseFirestore.instance.collection('VideoItem');
-      // Get the data from Firestore
-      QuerySnapshot querySnapshot = await TinyVideoCollection.get();
-
+      QuerySnapshot querySnapshot = await videosCollection.get();
       print('fetching VideoItem: ');
-
-      // Convert the Firestore documents to a list of maps
-      List<dynamic> TinyVideoDataList =
+      List<dynamic> videoDataList =
           querySnapshot.docs.map((doc) => doc.data()).toList();
-      // Convert the list of maps into a SongList
-      VideoList VideoListModel = VideoList.fromJson(TinyVideoDataList);
-      // Update the state with the new song list
+      VideoList videoListModel = VideoList.fromJson(videoDataList);
       setState(() {
-        _videoList = VideoListModel.list;
+        _videoList = videoListModel.list;
       });
       // Print out the song list to confirm data is correctly fetched
-      print(VideoListModel);
+      print(videoListModel);
       print('fetching finish ');
 
       setState(() {
@@ -61,9 +54,9 @@ class _TinyVideoPageState extends State<TinyVideoPage>
         page++;
 
         if (replace) {
-          _videoList = VideoListModel.list;
+          _videoList = videoListModel.list;
         } else {
-          _videoList.addAll(VideoListModel.list);
+          _videoList.addAll(videoListModel.list);
         }
       });
     } catch (e) {
@@ -119,28 +112,25 @@ class _TinyVideoPageState extends State<TinyVideoPage>
 
   Widget _buildBody() {
     return GridView.builder(
-      itemCount: _videoList.length,
-      itemBuilder: (BuildContext context, int index) {
-        final bool isEven = index.isEven;
-        final double pr = isEven ? 10 : 20;
-        final double pl = isEven ? 20 : 10;
+        itemCount: _videoList.length,
+        itemBuilder: (BuildContext context, int index) {
+          final bool isEven = index.isEven;
+          final double pr = isEven ? 10 : 20;
+          final double pl = isEven ? 20 : 10;
 
-        return Container(
+         return Container(
           padding: EdgeInsets.only(top: 20, left: pl, right: pr),
           color: Colors.white,
           child: TinyVideoCard(videoItem: _videoList[index]),
         );
       },
-      padding: const EdgeInsets.only(
-        top: 8,
-      ),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 8,
-        crossAxisSpacing: 1,
-        childAspectRatio: 9 / 18,
-      ),
-    );
+      padding: const EdgeInsets.only(top: 8),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+          mainAxisSpacing: 8,
+          crossAxisSpacing: 1,
+          childAspectRatio: 375 / 750,
+        ));
   }
 
   @override

@@ -163,9 +163,7 @@ class _SingerPageState extends State<SingerPage>
           ),
         );
       },
-      padding: const EdgeInsets.only(
-        top: 8,
-      ),
+      padding: const EdgeInsets.only(top: 8),
       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
         mainAxisExtent: MediaQuery.of(context).size.width / 1.5,
         maxCrossAxisExtent: MediaQuery.of(context).size.width / 2,

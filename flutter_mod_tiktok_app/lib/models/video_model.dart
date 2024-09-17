@@ -14,7 +14,7 @@ class VideoList {
 
 class VideoItem {
   final int id;
-  final int userid;
+  final int userId;
   final UserItem user;
   final String coverPictureUrl;
   final String videoUrl;
@@ -28,7 +28,7 @@ class VideoItem {
 
   VideoItem({
     required this.id,
-    required this.userid,
+    required this.userId,
     required this.user,
     required this.coverPictureUrl,
     required this.videoUrl,
@@ -44,7 +44,7 @@ class VideoItem {
   factory VideoItem.fromJson(dynamic item) {
     return VideoItem(
       id: item['id'],
-      userid: item['userid'],
+      userId: item['userId'],
       user: UserItem.fromJson(item['user']),
       coverPictureUrl: item['coverPictureUrl'],
       videoUrl: item['videoUrl'],

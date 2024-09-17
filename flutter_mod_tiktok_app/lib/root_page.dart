@@ -4,7 +4,7 @@ import 'config/app_colors.dart';
 import 'view/root_pages/home_page.dart';
 import 'view/root_pages/music_page.dart';
 import 'view/root_pages/profile.dart';
-import 'view/root_pages/tiny_video.dart';
+import 'view/sub_pages/tiny_video_page.dart';
 
 
 class RootPage extends StatefulWidget {

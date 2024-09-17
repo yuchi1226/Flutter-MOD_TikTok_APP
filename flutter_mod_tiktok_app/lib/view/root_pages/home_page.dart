@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import '../../components/root_page_head.dart';
 import '../sub_pages/singer_page.dart';
 import '../sub_pages/song_page..dart';
-import 'tiny_video.dart';
-
+import '../sub_pages/tiny_video_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
