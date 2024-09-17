@@ -18,7 +18,6 @@ class _TransitPageState extends State<TransitPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {

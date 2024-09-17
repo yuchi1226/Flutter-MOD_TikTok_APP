@@ -13,13 +13,11 @@ class TinyVideoCard extends StatelessWidget {
       children: [
         _cover(),
         Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: 8,
-          ),
+          padding: const EdgeInsets.symmetric(vertical: 8),
           child: AvataRoleName(
-            coverPictureUrl: videoItem.user!.coverPictureUrl,
-            nickname: videoItem.user!.nickname,
-            type: videoItem.user!.type,
+            coverPictureUrl: videoItem.user.coverPictureUrl,
+            nickname: videoItem.user.nickname,
+            type: videoItem.user.type,
             //avatarSize: 25,
           ),
         ),

@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 
 import 'config/app_colors.dart';
@@ -38,7 +40,6 @@ class _RootPageState extends State<RootPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     //生成底部導航
     _bottomNames.forEach((key, value) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mod_tiktok_app/view/sub_pages/article_page.dart';
 import '../../components/root_page_head.dart';
 import '../sub_pages/singer_page.dart';
 import '../sub_pages/song_page..dart';
@@ -25,7 +26,7 @@ final List<Widget> _tabsContent = [
   const Text('111111'),
   const SingerPage(),
   const TinyVideoPage(),
-  const Text('111111'),
+  const ArticlePage(),
   const Text('111111'),
 ];
 

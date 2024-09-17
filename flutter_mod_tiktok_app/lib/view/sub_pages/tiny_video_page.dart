@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_mod_tiktok_app/components/tiny_video_card.dart';
@@ -125,7 +127,7 @@ class _TinyVideoPageState extends State<TinyVideoPage>
         );
       },
       padding: const EdgeInsets.only(top: 8),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 8,
           crossAxisSpacing: 1,

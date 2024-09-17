@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_mod_tiktok_app/models/user_model.dart';
 
 class VideoList {
