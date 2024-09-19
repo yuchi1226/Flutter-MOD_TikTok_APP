@@ -4,6 +4,7 @@ import 'package:flutter_mod_tiktok_app/components/avatar_role_name.dart';
 import 'package:flutter_mod_tiktok_app/components/comment_like_read.dart';
 import 'package:flutter_mod_tiktok_app/config/app_colors.dart';
 import 'package:flutter_mod_tiktok_app/models/video_model.dart';
+import 'package:flutter_mod_tiktok_app/utils/util.dart';
 
 class VideoCard extends StatelessWidget {
   final VideoItem videoItem;
@@ -39,7 +40,49 @@ class VideoCard extends StatelessWidget {
     );
   }
 
-  Widget _cover() {}
+  Widget _cover() {
+    return AspectRatio(
+      aspectRatio: 16 / 9,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: FadeInImage.assetNetwork(
+              placeholder: 'assets/images/common/lazy-1.png',
+              image: videoItem.coverPictureUrl,
+              fit: BoxFit.cover,
+            ),
+          ),
+          Center(
+            child: Image.asset(
+              'assets/images/icons/play_plus.png',
+              width: 60,
+              height: 60,
+            ),
+          ),
+          Positioned(
+            right: 10,
+            bottom: 10,
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 2, horizontal: 6),
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Text(
+                secondsToTime(videoItem.contentSeconds),
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   Widget _bottom() {
     return Row(
@@ -60,6 +103,5 @@ class VideoCard extends StatelessWidget {
         ),
       ],
     );
-  }
   }
 }
