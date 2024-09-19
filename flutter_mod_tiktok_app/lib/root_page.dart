@@ -1,13 +1,13 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:proste_indexed_stack/proste_indexed_stack.dart';
 
 import 'config/app_colors.dart';
 import 'view/root_pages/home_page.dart';
 import 'view/root_pages/music_page.dart';
 import 'view/root_pages/profile.dart';
 import 'view/sub_pages/tiny_video_page.dart';
-
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
@@ -28,12 +28,19 @@ class _RootPageState extends State<RootPage> {
   //當前選中頁索引
   int _currentIndex = 0;
   //頁面集合
-  final List<Widget> _pages = [
+  /* final List<Widget> _pages = [
     const HomePage(),
     const MusicPage(),
     Container(),
     const TinyVideoPage(),
     const ProfilePage(),
+  ]; */
+  final List<IndexedStackChild> _pages = [
+    IndexedStackChild(child: HomePage()),
+    IndexedStackChild(child: MusicPage()),
+    IndexedStackChild(child: Container()),
+    IndexedStackChild(child: TinyVideoPage()),
+    IndexedStackChild(child: ProfilePage()),
   ];
   //底部導航數組
   final List<BottomNavigationBarItem> _bottomNavBatList = [];
@@ -66,7 +73,10 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pages[_currentIndex],
+      body: ProsteIndexedStack(
+        index: _currentIndex,
+        children: _pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: _bottomNavBatList,
         currentIndex: _currentIndex,
@@ -108,7 +118,7 @@ class _RootPageState extends State<RootPage> {
         height: 24,
       ),
       label: value,
-      tooltip: '',//去掉常按的提示字
+      tooltip: '', //去掉常按的提示字
     );
   }
 }

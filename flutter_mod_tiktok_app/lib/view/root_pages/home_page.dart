@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 const List<Tab> _tabs = [
   Tab(text: '歌曲'),
-  Tab(text: '推薦'),
+  //Tab(text: '推薦'),
   Tab(text: '歌手'),
   Tab(text: '短片'),
   Tab(text: '文章'),
@@ -24,7 +24,7 @@ const List<Tab> _tabs = [
 
 final List<Widget> _tabsContent = [
   const SongPage(),
-  const Text('111111'),
+  //const Text('111111'),
   const SingerPage(),
   const TinyVideoPage(),
   const ArticlePage(),
