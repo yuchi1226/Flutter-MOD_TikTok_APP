@@ -31,6 +31,6 @@ formatCharCount(int count) {
 
 //隨機獲取指定返回內的數值
 int getRandomRangeInt(int min, int max) {
-  final Random random = new Random();
+  final Random random = Random();
   return min + random.nextInt(max + 1 - min);
 }

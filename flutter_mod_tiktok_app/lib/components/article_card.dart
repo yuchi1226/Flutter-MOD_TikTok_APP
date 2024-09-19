@@ -25,15 +25,15 @@ class _ArticleCardState extends State<ArticleCard> {
   Widget build(BuildContext context) {
     boxSize = MediaQuery.of(context).size.width - paddingSize * 2;
     return Container(
-      padding: EdgeInsets.all(paddingSize),
+      padding: const EdgeInsets.all(paddingSize),
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _title(),
-          SizedBox(height: paddingSize),
-          _cover(),
-          SizedBox(height: paddingSize),
+          const SizedBox(height: paddingSize),
+          _getCoverByType(),
+          const SizedBox(height: paddingSize),
           _bottom(),
         ],
       ),
@@ -53,25 +53,26 @@ class _ArticleCardState extends State<ArticleCard> {
 // 基於圖片的長度獲取不同的隨機類型
   int _getTypeByLength() {
     int length = widget.articleItem.coverUrlList.length;
-    int coverType;
+    int _coverType;
     switch (length) {
       case 2:
-        coverType = getRandomRangeInt(2, 3);
+        _coverType = getRandomRangeInt(2, 3);
         break;
       case 3:
-        coverType = getRandomRangeInt(2, 7);
+        _coverType = getRandomRangeInt(2, 7);
         break;
       case 4:
-        coverType = getRandomRangeInt(2, 8);
+        _coverType = getRandomRangeInt(2, 8);
         break;
       default:
-        coverType = 1;
+        _coverType = 1;
     }
-    return coverType;
+    return _coverType;
   }
 
   _getCoverByType() {
-    int coverType = _getTypeByLength();
+    //int coverType = _getTypeByLength();
+    int coverType = 2;
     Widget _coverWidget;
 
     switch (coverType) {
@@ -109,7 +110,7 @@ class _ArticleCardState extends State<ArticleCard> {
       widget.articleItem.title,
       maxLines: 2,
       overflow: TextOverflow.ellipsis,
-      style: TextStyle(
+      style: const TextStyle(
         fontSize: 16,
         color: AppColors.active,
       ),
