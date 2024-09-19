@@ -72,7 +72,7 @@ class _ArticleCardState extends State<ArticleCard> {
 
   _getCoverByType() {
     int coverType = _getTypeByLength();
-    //int coverType = 8;
+    //int coverType = 1;
     Widget _coverWidget;
 
     switch (coverType) {
@@ -106,7 +106,11 @@ class _ArticleCardState extends State<ArticleCard> {
 
   /// 1張->1
   Widget _cover1() {
-    return _cover(index: 0);
+    return SizedBox(
+      width: boxSize,
+      height: boxSize,
+      child: _cover(index: 0),
+    );
   }
 
   //2張
