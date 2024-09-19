@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mod_tiktok_app/view/sub_pages/article_page.dart';
+import 'package:flutter_mod_tiktok_app/view/sub_pages/video_page.dart';
 import '../../components/root_page_head.dart';
 import '../sub_pages/singer_page.dart';
 import '../sub_pages/song_page..dart';
@@ -27,7 +28,7 @@ final List<Widget> _tabsContent = [
   const SingerPage(),
   const TinyVideoPage(),
   const ArticlePage(),
-  const Text('111111'),
+  const VideoPage(),
 ];
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
