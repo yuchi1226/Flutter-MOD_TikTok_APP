@@ -71,8 +71,8 @@ class _ArticleCardState extends State<ArticleCard> {
   }
 
   _getCoverByType() {
-    //int coverType = _getTypeByLength();
-    int coverType = 4;
+    int coverType = _getTypeByLength();
+    //int coverType = 8;
     Widget _coverWidget;
 
     switch (coverType) {
@@ -84,6 +84,18 @@ class _ArticleCardState extends State<ArticleCard> {
         break;
       case 4:
         _coverWidget = _cover4();
+        break;
+      case 5:
+        _coverWidget = _cover5();
+        break;
+      case 6:
+        _coverWidget = _cover6();
+        break;
+      case 7:
+        _coverWidget = _cover7();
+        break;
+      case 8:
+        _coverWidget = _cover8();
         break;
       default:
         _coverWidget = _cover1();
@@ -157,6 +169,129 @@ class _ArticleCardState extends State<ArticleCard> {
               width: boxSize / 2 - spaceSize / 2,
               height: boxSize / 2 - spaceSize / 2,
               child: _cover(index: 2),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _cover5() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          children: [
+            SizedBox(
+              width: boxSize / 2 - spaceSize / 2,
+              height: boxSize / 2 - spaceSize / 2,
+              child: _cover(index: 0),
+            ),
+            SizedBox(height: spaceSize),
+            SizedBox(
+              width: boxSize / 2 - spaceSize / 2,
+              height: boxSize / 2 - spaceSize / 2,
+              child: _cover(index: 1),
+            ),
+          ],
+        ),
+        SizedBox(
+          width: boxSize / 2 - spaceSize / 2,
+          height: boxSize,
+          child: _cover(index: 2),
+        ),
+      ],
+    );
+  }
+
+  Widget _cover6() {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              width: boxSize / 2 - spaceSize / 2,
+              height: boxSize / 2 - spaceSize / 2,
+              child: _cover(index: 0),
+            ),
+            SizedBox(
+              width: boxSize / 2 - spaceSize / 2,
+              height: boxSize / 2 - spaceSize / 2,
+              child: _cover(index: 1),
+            ),
+          ],
+        ),
+        SizedBox(height: spaceSize),
+        SizedBox(
+          width: boxSize,
+          height: boxSize / 2 - spaceSize / 2,
+          child: _cover(index: 2),
+        ),
+      ],
+    );
+  }
+
+  Widget _cover7() {
+    return Column(
+      children: [
+        SizedBox(
+          width: boxSize,
+          height: boxSize / 2 - spaceSize / 2,
+          child: _cover(index: 0),
+        ),
+        SizedBox(height: spaceSize),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              width: boxSize / 2 - spaceSize / 2,
+              height: boxSize / 2 - spaceSize / 2,
+              child: _cover(index: 1),
+            ),
+            SizedBox(
+              width: boxSize / 2 - spaceSize / 2,
+              height: boxSize / 2 - spaceSize / 2,
+              child: _cover(index: 2),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _cover8() {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox(
+              width: boxSize / 2 - spaceSize / 2,
+              height: boxSize / 2 - spaceSize / 2,
+              child: _cover(index: 0),
+            ),
+            SizedBox(width: spaceSize),
+            SizedBox(
+              width: boxSize / 2 - spaceSize / 2,
+              height: boxSize / 2 - spaceSize / 2,
+              child: _cover(index: 1),
+            ),
+          ],
+        ),
+        SizedBox(height: spaceSize),
+        Row(
+          children: [
+            SizedBox(
+              width: boxSize / 2 - spaceSize / 2,
+              height: boxSize / 2 - spaceSize / 2,
+              child: _cover(index: 2),
+            ),
+            SizedBox(width: spaceSize),
+            SizedBox(
+              width: boxSize / 2 - spaceSize / 2,
+              height: boxSize / 2 - spaceSize / 2,
+              child: _cover(index: 3),
             ),
           ],
         ),
