@@ -53,7 +53,7 @@ class _ArticleCardState extends State<ArticleCard> {
 // 基於圖片的長度獲取不同的隨機類型
   int _getTypeByLength() {
     //int length = widget.articleItem.coverUrlList.length;
-    double length = widget.articleItem.coverUrlList.length / 4 + 1; //只寫了顯示4張圖的，後面在優化成4張以上
+    double length = 4; //只寫了顯示4張圖的，後面在優化成4張以上
     int coverType;
     switch (length) {
       case 2:
