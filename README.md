@@ -16,11 +16,12 @@
 
 ## 頁面緩存  
 
-#### 底部bottomNavigationBar頁面資料緩存
+#### **底部bottomNavigationBar頁面資料緩存**
+常用的 app 都有底部的切換功能，就像這樣：
+"D:\Flutter-MOD_TikTok_APP\preview_images\螢幕擷取畫面 2024-09-22 235850.png"
 
 
-
-- [x] 
+ 
 ---
 <!-- 
 ## 參考資料 -- BV1LK4y1P7BB
