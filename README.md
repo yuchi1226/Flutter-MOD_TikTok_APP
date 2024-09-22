@@ -34,7 +34,8 @@
 ![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/image.png?raw=true)
 
 這樣切換頁面，頁面的狀態不會被遺失，如果做了網路請求，那麼就不會去頻繁的刷新資料了。
-
+  
+  
 - [x] **TabBar 切換頁面資料緩存**
 Tabbar 切換已經是所有 app 中常見的場景了，flutter 也提供了這個元件，讓我們很快速簡單的實作這個功能
 
