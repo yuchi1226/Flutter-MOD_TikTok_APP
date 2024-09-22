@@ -36,11 +36,11 @@ class _RootPageState extends State<RootPage> {
     const ProfilePage(),
   ]; */
   final List<IndexedStackChild> _pages = [
-    IndexedStackChild(child: HomePage()),
-    IndexedStackChild(child: MusicPage()),
+    IndexedStackChild(child: const HomePage()),
+    IndexedStackChild(child: const MusicPage()),
     IndexedStackChild(child: Container()),
-    IndexedStackChild(child: TinyVideoPage()),
-    IndexedStackChild(child: ProfilePage()),
+    IndexedStackChild(child: const TinyVideoPage()),
+    IndexedStackChild(child: const ProfilePage()),
   ];
   //底部導航數組
   final List<BottomNavigationBarItem> _bottomNavBatList = [];

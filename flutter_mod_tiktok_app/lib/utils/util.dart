@@ -37,7 +37,7 @@ int getRandomRangeInt(int min, int max) {
 
 // 秒數轉 時:分:秒
 String secondsToTime(int seconds) {
-  if (seconds == null || seconds <= 0 || seconds.isNaN) {
+  if (seconds <= 0 || seconds.isNaN) {
     return '00:00';
   }
   // 時分數

@@ -1,5 +1,19 @@
 # Flutter-MOD_TikTok_APP 
 
+## 項目預覽
+
+
+## 頁面結構 
+Lib/ 
+components/ =>全域元件 
+config/ =>配置 
+models/ =>模型  
+utils/ =>工具 
+pages/ => 頁面 
+app_page.dart // 根頁面 
+main.dart => 入口文件 
+tansit_page.dart =>啟動頁
+
 ---
 <!-- 
 ## 參考資料 -- BV1LK4y1P7BB

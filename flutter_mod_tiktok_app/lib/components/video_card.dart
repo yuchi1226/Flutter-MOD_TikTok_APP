@@ -13,15 +13,15 @@ class VideoCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(20),
+      padding: const EdgeInsets.all(20),
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _title(),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           _cover(),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           _bottom(),
         ],
       ),
@@ -65,14 +65,14 @@ class VideoCard extends StatelessWidget {
             right: 10,
             bottom: 10,
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 2, horizontal: 6),
+              padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 6),
               decoration: BoxDecoration(
                 color: Colors.black.withOpacity(0.5),
                 borderRadius: BorderRadius.circular(4),
               ),
               child: Text(
                 secondsToTime(videoItem.contentSeconds),
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 12,
                 ),

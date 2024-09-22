@@ -54,55 +54,55 @@ class _ArticleCardState extends State<ArticleCard> {
   int _getTypeByLength() {
     //int length = widget.articleItem.coverUrlList.length;
     double length = widget.articleItem.coverUrlList.length / 4 + 1; //只寫了顯示4張圖的，後面在優化成4張以上
-    int _coverType;
+    int coverType;
     switch (length) {
       case 2:
-        _coverType = getRandomRangeInt(2, 3);
+        coverType = getRandomRangeInt(2, 3);
         break;
       case 3:
-        _coverType = getRandomRangeInt(2, 7);
+        coverType = getRandomRangeInt(2, 7);
         break;
       case 4:
-        _coverType = getRandomRangeInt(2, 8);
+        coverType = getRandomRangeInt(2, 8);
         break;
       default:
-        _coverType = 1;
+        coverType = 1;
     }
-    return _coverType;
+    return coverType;
   }
 
   _getCoverByType() {
     int coverType = _getTypeByLength();
     //int coverType = 1;
-    Widget _coverWidget;
+    Widget coverWidget;
 
     switch (coverType) {
       case 2:
-        _coverWidget = _cover2();
+        coverWidget = _cover2();
         break;
       case 3:
-        _coverWidget = _cover3();
+        coverWidget = _cover3();
         break;
       case 4:
-        _coverWidget = _cover4();
+        coverWidget = _cover4();
         break;
       case 5:
-        _coverWidget = _cover5();
+        coverWidget = _cover5();
         break;
       case 6:
-        _coverWidget = _cover6();
+        coverWidget = _cover6();
         break;
       case 7:
-        _coverWidget = _cover7();
+        coverWidget = _cover7();
         break;
       case 8:
-        _coverWidget = _cover8();
+        coverWidget = _cover8();
         break;
       default:
-        _coverWidget = _cover1();
+        coverWidget = _cover1();
     }
 
-    return _coverWidget;
+    return coverWidget;
   }
 
   /// 1張->1
@@ -124,7 +124,7 @@ class _ArticleCardState extends State<ArticleCard> {
           height: boxSize / 2 - spaceSize / 2,
           child: _cover(index: 0),
         ),
-        SizedBox(height: spaceSize),
+        const SizedBox(height: spaceSize),
         SizedBox(
           width: boxSize,
           height: boxSize / 2 - spaceSize / 2,
@@ -143,7 +143,7 @@ class _ArticleCardState extends State<ArticleCard> {
           height: boxSize / 2 - spaceSize / 2,
           child: _cover(index: 0),
         ),
-        SizedBox(height: spaceSize),
+        const SizedBox(height: spaceSize),
         SizedBox(
           width: boxSize,
           height: boxSize / 2 - spaceSize / 2,
@@ -169,7 +169,7 @@ class _ArticleCardState extends State<ArticleCard> {
               height: boxSize / 2 - spaceSize / 2,
               child: _cover(index: 1),
             ),
-            SizedBox(height: spaceSize),
+            const SizedBox(height: spaceSize),
             SizedBox(
               width: boxSize / 2 - spaceSize / 2,
               height: boxSize / 2 - spaceSize / 2,
@@ -192,7 +192,7 @@ class _ArticleCardState extends State<ArticleCard> {
               height: boxSize / 2 - spaceSize / 2,
               child: _cover(index: 0),
             ),
-            SizedBox(height: spaceSize),
+            const SizedBox(height: spaceSize),
             SizedBox(
               width: boxSize / 2 - spaceSize / 2,
               height: boxSize / 2 - spaceSize / 2,
@@ -227,7 +227,7 @@ class _ArticleCardState extends State<ArticleCard> {
             ),
           ],
         ),
-        SizedBox(height: spaceSize),
+        const SizedBox(height: spaceSize),
         SizedBox(
           width: boxSize,
           height: boxSize / 2 - spaceSize / 2,
@@ -245,7 +245,7 @@ class _ArticleCardState extends State<ArticleCard> {
           height: boxSize / 2 - spaceSize / 2,
           child: _cover(index: 0),
         ),
-        SizedBox(height: spaceSize),
+        const SizedBox(height: spaceSize),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -276,7 +276,7 @@ class _ArticleCardState extends State<ArticleCard> {
               height: boxSize / 2 - spaceSize / 2,
               child: _cover(index: 0),
             ),
-            SizedBox(width: spaceSize),
+            const SizedBox(width: spaceSize),
             SizedBox(
               width: boxSize / 2 - spaceSize / 2,
               height: boxSize / 2 - spaceSize / 2,
@@ -284,7 +284,7 @@ class _ArticleCardState extends State<ArticleCard> {
             ),
           ],
         ),
-        SizedBox(height: spaceSize),
+        const SizedBox(height: spaceSize),
         Row(
           children: [
             SizedBox(
@@ -292,7 +292,7 @@ class _ArticleCardState extends State<ArticleCard> {
               height: boxSize / 2 - spaceSize / 2,
               child: _cover(index: 2),
             ),
-            SizedBox(width: spaceSize),
+            const SizedBox(width: spaceSize),
             SizedBox(
               width: boxSize / 2 - spaceSize / 2,
               height: boxSize / 2 - spaceSize / 2,
