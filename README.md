@@ -25,7 +25,23 @@
   
 這就搬出來一個元件 IndexedStack，它就像是 stack 元件一樣層疊在一起，事實上內部就是 statck 來實現的，它可以頁面切換時不會去銷毀或替換當前頁，而是層疊在一起。
 
+![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/image.png?raw=true)
 
+這樣切換頁面，頁面的狀態不會被遺失，如果做了網路請求，那麼就不會去頻繁的刷新資料了。
+
+#### **TabBar 切換頁面資料緩存**
+Tabbar 切換已經是所有 app 中常見的場景了，flutter 也提供了這個元件，讓我們很快速簡單的實作這個功能
+
+![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-22%20235917.png?raw=true)
+
+但如同上面的 bottomNavigationBar，它每次切換，並不會去保持頁面的狀態，而是每次都會重新取繪製。 如果要實現頁面緩存，需遵循幾個注意點： 
+1.被 tabbarView 包裹的頁面必須繼承自 StatefulWidget 
+2、該頁面的state必須混入 AutomaticKeepAliveClientMixin 
+3、該頁面中重寫 wantKeepAlive 具體寫法如下，紅框的部分你必須這麼做：
+
+![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/image%20(1).png?raw=true)
+
+做了以上配置，你如果在 build 中 print 一下，當你切換 tabbar 時，print 就不會列印，也就實現了頁面保持狀態。
  
 ---
 <!-- 
