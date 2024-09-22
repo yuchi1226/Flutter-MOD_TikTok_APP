@@ -4,15 +4,15 @@
 
 
 ## 頁面結構 
-Lib/  
-components/ =>全域元件   
-config/ =>配置  
-models/ =>模型   
-utils/ =>工具  
-pages/ => 頁面  
-app_page.dart // 根頁面  
-main.dart => 入口文件  
-tansit_page.dart =>啟動頁 
+### Lib/  
+&emsp;components/ =>全域元件   
+&emsp;config/ =>配置  
+&emsp;models/ =>模型   
+&emsp;utils/ =>工具  
+&emsp;pages/ => 頁面  
+&emsp;app_page.dart // 根頁面  
+&emsp;main.dart => 入口文件  
+&emsp;tansit_page.dart =>啟動頁 
 
 ## 頁面緩存  
 
