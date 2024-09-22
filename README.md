@@ -18,7 +18,12 @@
 
 #### **底部bottomNavigationBar頁面資料緩存**
 常用的 app 都有底部的切換功能，就像這樣：
+
 ![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-22%20235850.png?raw=true)
+
+每次切換頁面，都會重新繪製頁面，結果很顯然，頁面的狀態將會遺失。  
+  
+這就搬出來一個元件 IndexedStack，它就像是 stack 元件一樣層疊在一起，事實上內部就是 statck 來實現的，它可以頁面切換時不會去銷毀或替換當前頁，而是層疊在一起。
 
 
  
