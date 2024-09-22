@@ -14,6 +14,13 @@
 &emsp;main.dart => 入口文件  
 &emsp;tansit_page.dart =>啟動頁 
 
+## 項目頁面
+歌曲、歌手、短文、文章、影片等頁面編寫完成。資料從 FireBase fetch 
+
+## 常用Colors、主題樣式  
+config下新建 app_colors.dart檔、app_thumb.dart檔，內包含主題色、頁面背景色、選項卡欄的顏色、文字顏色等等。為此項目的主要構成顏色，可從此檔中呼叫，不需反覆編寫。
+
+
 ## 頁面緩存  
 
 #### **底部bottomNavigationBar頁面資料緩存**
