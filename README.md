@@ -4,7 +4,7 @@
 
 
 ## 頁面結構 
-### Lib/  
+- [x] **Lib/**  
 &emsp;components/ =>全域元件   
 &emsp;config/ =>配置  
 &emsp;models/ =>模型   
@@ -15,15 +15,14 @@
 &emsp;tansit_page.dart =>啟動頁 
 
 ## 項目頁面
-歌曲、歌手、短文、文章、影片等頁面編寫完成。資料從 FireBase fetch 
+- [x] 歌曲、歌手、短文、文章、影片等頁面編寫完成。資料從 FireBase fetch 
 
 ## 常用Colors、主題樣式  
-config下新建 app_colors.dart檔、app_thumb.dart檔，內包含主題色、頁面背景色、選項卡欄的顏色、文字顏色等等。為此項目的主要構成顏色，可從此檔中呼叫，不需反覆編寫。
-
+- [x] config下新建 app_colors.dart檔、app_thumb.dart檔，內包含主題色、頁面背景色、選項卡欄的顏色、文字顏色等等。為此項目的主要構成顏色，可從此檔中呼叫，不需反覆編寫。
 
 ## 頁面緩存  
 
-#### **底部bottomNavigationBar頁面資料緩存**
+- [x] **底部bottomNavigationBar頁面資料緩存**
 常用的 app 都有底部的切換功能，就像這樣：
 
 ![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-22%20235850.png?raw=true)
@@ -36,7 +35,7 @@ config下新建 app_colors.dart檔、app_thumb.dart檔，內包含主題色、�
 
 這樣切換頁面，頁面的狀態不會被遺失，如果做了網路請求，那麼就不會去頻繁的刷新資料了。
 
-#### **TabBar 切換頁面資料緩存**
+- [x] **TabBar 切換頁面資料緩存**
 Tabbar 切換已經是所有 app 中常見的場景了，flutter 也提供了這個元件，讓我們很快速簡單的實作這個功能
 
 ![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-22%20235917.png?raw=true)
