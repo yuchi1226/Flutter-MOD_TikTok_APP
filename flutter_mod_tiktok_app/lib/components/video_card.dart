@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mod_tiktok_app/components/article_card.dart';
 import 'package:flutter_mod_tiktok_app/components/avatar_role_name.dart';
 import 'package:flutter_mod_tiktok_app/components/comment_like_read.dart';
 import 'package:flutter_mod_tiktok_app/config/app_colors.dart';
