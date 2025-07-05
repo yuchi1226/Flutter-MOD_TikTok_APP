@@ -1,5 +1,8 @@
 # Flutter-MOD_TikTok_APP 
 
+## 專案簡介
+本專案是一個多平台（Android/iOS/Web/Windows/macOS/Linux）Flutter 仿 TikTok 應用，整合 Firebase，具備短影音、音樂、文章、用戶資訊等功能，並以元件化、資料模型、主題樣式等方式設計，方便擴充與維護。
+
 ## 項目預覽
 ![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-24%20002332.png)
 ![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-24%20002359.png)
@@ -8,66 +11,136 @@
 ![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-24%20002451.png)
 ![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-24%20002504.png)
 
-## 頁面結構 
-- [x] **Lib/**  
-&emsp;components/ =>全域元件   
-&emsp;config/ =>配置  
-&emsp;models/ =>模型   
-&emsp;utils/ =>工具  
-&emsp;pages/ => 頁面  
-&emsp;app_page.dart // 根頁面  
-&emsp;main.dart => 入口文件  
-&emsp;tansit_page.dart =>啟動頁 
+## 專案結構與檔案說明
 
-## 編寫啟動頁
-- [x] 啟動頁會有 3 秒的廣告時間，可以點擊右上角的跳過鍵跳出啟動頁
+### 根目錄
+- `duuchin.sql`：資料庫初始化或備份腳本
+- `preview_images/`：專案預覽截圖
+- `README.md`：專案說明文件
 
-## 項目頁面
-- [x] 歌曲、歌手、短文、文章、影片等頁面編寫完成。資料從 FireBase fetch 
+### flutter_mod_tiktok_app/
+#### 配置與資源
+- `pubspec.yaml`：依賴與資源設定
+- `analysis_options.yaml`：Dart 靜態分析規則
+- `assets/`：靜態資源（圖片、icons）
 
-## 常用Colors、主題樣式  
-- [x] config下新建 app_colors.dart檔、app_thumb.dart檔，內包含主題色、頁面背景色、選項卡欄的顏色、文字顏色等等。為此項目的主要構成顏色，可從此檔中呼叫，不需反覆編寫。
+#### 平台專屬
+- `android/`、`ios/`、`web/`、`windows/`、`macos/`、`linux/`：各平台原生設定與啟動檔案
 
-## 頁面緩存  
+#### 程式主體
+- `lib/main.dart`：應用程式進入點，初始化主題、路由、Firebase 等
+- `lib/root_page.dart`：主頁面邏輯，底部導航與主內容切換
+- `lib/transit_page.dart`：啟動頁，含 3 秒廣告與跳過功能
 
-- [x] **底部bottomNavigationBar頁面資料緩存**
-常用的 app 都有底部的切換功能，就像這樣：
+#### 元件
+- `lib/components/`：可重用 UI 元件
+  - `article_card.dart`：文章卡片
+  - `avatar_role_name.dart`：頭像與角色名稱
+  - `comment_like_read.dart`：評論、按讚、閱讀數
+  - `root_page_head.dart`：主頁頭部
+  - `singer_card.dart`：歌手卡片
+  - `song_card.dart`：歌曲卡片
+  - `tiny_video_card.dart`：小型短影音卡片
+  - `video_card.dart`：短影音卡片
 
-![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-22%20235850.png?raw=true)
+#### 設定
+- `lib/config/`
+  - `app_colors.dart`：全域色彩設定
+  - `app_theme.dart`：主題樣式設定
 
-每次切換頁面，都會重新繪製頁面，結果很顯然，頁面的狀態將會遺失。  
-  
-這就搬出來一個元件 IndexedStack，它就像是 stack 元件一樣層疊在一起，事實上內部就是 statck 來實現的，它可以頁面切換時不會去銷毀或替換當前頁，而是層疊在一起。
+#### Firebase 整合
+- `lib/FireBaseTest/`
+  - `add_data.dart`：新增資料到 Firebase
+  - `connection_firebase.dart`：Firebase 連線設定
+  - `fetch_data.dart`：從 Firebase 取得資料
+  - `main.dart`：Firebase 測試主程式
 
-![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/image.png?raw=true)
+#### 資料模型
+- `lib/models/`
+  - `article_model.dart`：文章資料結構
+  - `song_model.dart`：歌曲資料結構
+  - `user_model.dart`：用戶資料結構
+  - `video_model.dart`：短影音資料結構
 
-這樣切換頁面，頁面的狀態不會被遺失，如果做了網路請求，那麼就不會去頻繁的刷新資料了。
-  
-    
-- [x] **TabBar 切換頁面資料緩存**
-Tabbar 切換已經是所有 app 中常見的場景了，flutter 也提供了這個元件，讓我們很快速簡單的實作這個功能
+#### 工具
+- `lib/utils/`
+  - `user_type.dart`：用戶類型定義
+  - `util.dart`：通用工具函式
 
-![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202024-09-22%20235917.png?raw=true)
+#### 頁面
+- `lib/view/root_pages/`：主頁相關頁面
+- `lib/view/sub_pages/`：子頁面（如詳細頁、設定頁等）
 
-但如同上面的 bottomNavigationBar，它每次切換，並不會去保持頁面的狀態，而是每次都會重新取繪製。 如果要實現頁面緩存，需遵循幾個注意點：  
-1.被 tabbarView 包裹的頁面必須繼承自 StatefulWidget  
-2、該頁面的state必須混入 AutomaticKeepAliveClientMixin  
-3、該頁面中重寫 wantKeepAlive 具體寫法如下，紅框的部分你必須這麼做：  
-
-![](https://github.com/yuchi1226/Flutter-MOD_TikTok_APP/blob/main/preview_images/image%20(1).png?raw=true)
-
-做了以上配置，你如果在 build 中 print 一下，當你切換 tabbar 時，print 就不會列印，也就實現了頁面保持狀態。
- 
 ---
-<!-- 
-## 參考資料 -- BV1LK4y1P7BB
 
-* 使用 VS Code 開發 Flutter App — 建立專案，打開專案和啟動模擬器執行 App:https://medium.com/%E5%BD%BC%E5%BE%97%E6%BD%98%E7%9A%84-flutter-app-%E9%96%8B%E7%99%BC%E5%95%8F%E9%A1%8C%E8%A7%A3%E7%AD%94%E9%9B%86/%E4%BD%BF%E7%94%A8-vs-code-%E9%96%8B%E7%99%BC-flutter-app-%E5%BB%BA%E7%AB%8B%E5%B0%88%E6%A1%88-%E6%89%93%E9%96%8B%E5%B0%88%E6%A1%88%E5%92%8C%E5%95%9F%E5%8B%95%E6%A8%A1%E6%93%AC%E5%99%A8%E5%9F%B7%E8%A1%8C-app-213054edc169
+## 主要功能
+- [x] 啟動頁（3 秒廣告，可跳過）
+- [x] 底部導航（IndexedStack 實現狀態緩存）
+- [x] TabBar 切換（AutomaticKeepAliveClientMixin 實現狀態緩存）
+- [x] 歌曲、歌手、短文、文章、影片等頁面（資料來自 Firebase）
+- [x] 全域主題色、樣式統一管理
 
-* How to Connect Flutter App with Firebase:https://www.youtube.com/watch?v=VCjG_v6oYyA
+---
 
-* Failed to load FirebaseOptions from resource. Check that you have defined values.xml correctly:https://www.youtube.com/watch?v=bHxoJWWsG7A
+## 安裝與執行
+1. 安裝 Flutter SDK 與 Dart 環境
+2. 下載本專案並進入 `flutter_mod_tiktok_app` 目錄
+3. 執行 `flutter pub get` 安裝依賴
+4. 配置 Firebase（請將 `google-services.json`/`GoogleService-Info.plist` 放入對應資料夾）
+5. 執行 `flutter run` 啟動專案
 
-* 類別的建構子中，參數不能為null:https://blog.csdn.net/shulianghan/article/details/119918924
+---
 
--- >
+## 開發與貢獻
+- 歡迎 issue、PR 與建議
+- 請遵循元件化、資料模型、主題樣式等設計原則
+
+---
+
+## 參考資料
+* [Flutter 官方文件](https://docs.flutter.dev/)
+* [Flutter 與 Firebase 整合教學](https://www.youtube.com/watch?v=VCjG_v6oYyA)
+* [IndexedStack 狀態緩存](https://api.flutter.dev/flutter/widgets/IndexedStack-class.html)
+* [AutomaticKeepAliveClientMixin 狀態保持](https://api.flutter.dev/flutter/widgets/AutomaticKeepAliveClientMixin-mixin.html)
+
+---
+
+## 頁面緩存與狀態保持說明
+
+### IndexedStack 實現底部導航狀態緩存
+- 切換頁面時不會銷毀狀態，避免重複請求與重繪
+- 適用於底部導航（如 TikTok 主頁、發現、訊息、個人頁）
+
+### TabBar 狀態保持
+- TabBarView 包裹頁面需繼承 StatefulWidget
+- 混入 AutomaticKeepAliveClientMixin 並覆寫 wantKeepAlive
+- 切換 Tab 時狀態不會遺失
+
+---
+
+## 目錄結構圖（簡化）
+
+```
+flutter_mod_tiktok_app/
+├── android/
+├── ios/
+├── web/
+├── windows/
+├── macos/
+├── linux/
+├── assets/
+│   └── images/
+├── lib/
+│   ├── main.dart
+│   ├── root_page.dart
+│   ├── transit_page.dart
+│   ├── components/
+│   ├── config/
+│   ├── FireBaseTest/
+│   ├── models/
+│   ├── utils/
+│   └── view/
+└── ...
+```
+
+---
